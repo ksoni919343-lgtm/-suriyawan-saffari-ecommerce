@@ -1,31 +1,20 @@
 import React from 'react';
 
 interface ProductCardProps {
-  product: {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-  };
-  onBuy?: () => void;
+  image: string;
+  title: string;
+  price: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onBuy }) => {
+export default function ProductCard({ image, title, price }: ProductCardProps) {
   return (
-    <div className="product-card transform-style: preserve-3d">
-      <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded border-2 border-gold" />
-      <h2 className="text-lg font-semibold text-navy mt-2 text-shadow-golden">{product.name}</h2>
-      <p className="text-gold text-xl">₹{product.price}</p>
-      {onBuy && (
-        <button
-          onClick={onBuy}
-          className="bg-gold text-navy px-4 py-2 rounded mt-2 hover:bg-yellow-600 transition-all duration-300 transform-gpu hover:translate-z-5"
-        >
-          Buy Now
-        </button>
-      )}
+    <div className="product-card w-full transform-gpu hover:rotate-y-20 hover:scale-110 transition-all duration-500">
+      <img src={image} alt={title} className="w-full h-48 object-cover rounded-xl border-4 border-double border-sandy-gold transform-gpu hover:scale-125 hover:shadow-[0_0_30px_#FFD700] transition-all duration-300" />
+      <h2 className="text-2xl font-bold text-white mt-4 text-shadow-golden">{title}</h2>
+      <p className="text-xl text-white mt-2">{price}</p>
+      <button className="mt-4 px-6 py-3 bg-sandy-gold text-chockleti rounded-xl shadow-lg hover:bg-yellow-600 hover:shadow-2xl transition-all duration-300 transform-gpu hover:translate-z-10">
+        Buy Now
+      </button>
     </div>
   );
-};
-
-export default ProductCard;
+}
