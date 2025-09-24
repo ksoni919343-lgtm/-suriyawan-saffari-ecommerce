@@ -1,12 +1,10 @@
-CREATE TABLE users (
-  id UUID PRIMARY KEY REFERENCES auth.users(id),
-  email TEXT NOT NULL,
-  name TEXT,
-  address TEXT,
-  phone TEXT,
-  blocked BOOLEAN DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
+CREATE TABLE real_users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users manage own profile" ON users FOR ALL USING (auth.uid() = id);
+
+CREATE INDEX idx_username ON real_users(username);
