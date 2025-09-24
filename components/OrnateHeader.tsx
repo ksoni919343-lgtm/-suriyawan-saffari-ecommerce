@@ -4,12 +4,10 @@ interface OrnateHeaderProps {
   title: string;
 }
 
-const OrnateHeader: React.FC<OrnateHeaderProps> = ({ title }) => {
+export default function OrnateHeader({ title }: OrnateHeaderProps) {
   return (
-    <h1 className="ornate-border text-3xl font-bold mb-6 text-shadow-golden transform-style: preserve-3d">
-      {title}
-    </h1>
+    <div className="ornate-border transform-gpu hover:rotate-x-15 hover:scale-105 transition-all duration-500">
+      <h1 className="text-5xl font-extrabold text-white text-shadow-golden">{title}</h1>
+    </div>
   );
-};
-
-export default OrnateHeader;
+}
