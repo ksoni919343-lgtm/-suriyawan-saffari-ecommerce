@@ -2,63 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --navy: #001F3F;
-  --gold: #FFD700;
-  --beige: #F5F5DC;
-  --sand: #D2B48C;
+body {
+  @apply bg-gradient-to-br from-chockleti to-sandy-gold text-white font-cinzel min-h-screen;
 }
 
-.bg-navy { background-color: var(--navy); }
-.text-gold { color: var(--gold); }
-.bg-beige { background-color: var(--beige); }
-.bg-sand-gradient { background: linear-gradient(to bottom, var(--sand), var(--beige)); }
-
-.ornate-border {
-  border: 2px solid var(--gold);
-  border-radius: 10px;
-  padding: 1rem;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: rotateX(10deg) translateZ(20px);
-  transition: transform 0.6s ease;
-}
-.ornate-border::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) translateZ(10px);
-  background: url('/floral-icon.png') no-repeat center;
-  width: 50px;
-  height: 50px;
-  filter: brightness(1.5) drop-shadow(0 0 10px #FFD700);
-  animation: goldenBounce 3s ease-in-out infinite;
-}
-.ornate-border:hover {
-  transform: rotateX(15deg) translateZ(30px) scale(1.05);
-}
-
-.product-card {
-  background-color: var(--beige);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg) translateZ(10px);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-.product-card:hover {
-  transform: rotateY(10deg) translateZ(20px) scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.grid-products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  perspective: 1000px;
+@layer components {
+  .ornate-border {
+    @apply border-6 border-double border-sandy-gold rounded-3xl p-14 text-center text-4xl font-bold bg-chockleti text-white shadow-[0_30px_80px_rgba(0,0,0,0.7)] transition-all duration-500 transform-gpu perspective-2000;
+  }
 }
