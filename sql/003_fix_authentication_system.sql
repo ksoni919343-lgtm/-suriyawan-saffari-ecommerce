@@ -1,2 +1,3 @@
-ALTER TABLE auth.users ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users can view own data" ON auth.users FOR SELECT USING (auth.uid() = id);
+ALTER TABLE users ADD COLUMN email_verified BOOLEAN DEFAULT FALSE;
+CREATE UNIQUE INDEX idx_email ON users(email);
+ALTER TABLE users ADD COLUMN last_login TIMESTAMP;
