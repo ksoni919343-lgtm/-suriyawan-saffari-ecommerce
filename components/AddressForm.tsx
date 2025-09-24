@@ -1,37 +1,10 @@
-'use client';
 import React from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
 
-const loader = new Loader({
-  apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
-  version: 'weekly',
-});
-
-const AddressForm = () => {
-  const [address, setAddress] = React.useState('');
-
-  React.useEffect(() => {
-    loader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('address-input') as HTMLInputElement,
-        { types: ['geocode'] }
-      );
-      autocomplete.addListener('place_changed', () => {
-        const place = autocomplete.getPlace();
-        setAddress(place.formatted_address || '');
-      });
-    });
-  }, []);
-
+export default function AddressForm() {
   return (
-    <input
-      id="address-input"
-      value={address}
-      onChange={(e) => setAddress(e.target.value)}
-      placeholder="Enter Address"
-      className="w-full p-2 border rounded"
-    />
+    <div className="p-6 bg-chockleti rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform-gpu hover:scale-105 transition-all duration-300">
+      <h2 className="text-2xl font-bold text-white text-shadow-golden">Address Form</h2>
+      <p className="mt-2 text-white">Address form with Google Maps content goes here.</p>
+    </div>
   );
-};
-
-export default AddressForm;
+}
