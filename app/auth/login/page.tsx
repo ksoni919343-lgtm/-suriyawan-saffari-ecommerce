@@ -1,55 +1,14 @@
-'use client';
-import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
-import OrnateHeader from '@/components/OrnateHeader';
+import React from 'react';
 
 export default function Login() {
-  const [email, setEmail] = useState('memberpoint89@gmail.com');
-  const [password, setPassword] = useState('3567965s3567965');
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
-
-  const handleLogin = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-      router.push('/');
-    } catch (e) {
-      setError((e as Error).message);
-    }
-  };
-
-  const handleOTPLogin = async () => {
-    const { error } = await supabase.auth.signInWithOtp({ email, phone: email.split('@')[0] });
-    if (error) setError(error.message);
-  };
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-sand-gradient">
-      <div className="w-full max-w-md p-8 bg-beige rounded-lg shadow-lg">
-        <OrnateHeader title="Login to Suriyawan Saffari" />
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="w-full p-2 mb-4 border rounded"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="w-full p-2 mb-4 border rounded"
-        />
-        <button onClick={handleLogin} className="w-full bg-gold text-navy p-2 rounded mb-2">
-          Login with Password
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="ornate-border transform-gpu hover:rotate-x-15 hover:scale-105 transition-all duration-500">
+        <h1 className="text-5xl font-extrabold text-white text-shadow-golden">Login</h1>
+        <p className="mt-6 text-xl text-white">Please log in to access the portals.</p>
+        <button className="mt-8 px-6 py-3 bg-sandy-gold text-chockleti rounded-xl shadow-lg hover:bg-yellow-600 hover:shadow-2xl transition-all duration-300 transform-gpu hover:translate-z-10">
+          Login Now
         </button>
-        <button onClick={handleOTPLogin} className="w-full bg-gold text-navy p-2 rounded">
-          Login with OTP
-        </button>
-        {error && <p className="text-red-500 mt-2">{error}</p>}
       </div>
     </div>
   );
