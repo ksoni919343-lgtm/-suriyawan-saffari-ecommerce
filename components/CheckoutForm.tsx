@@ -1,20 +1,10 @@
-'use client';
 import React from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { Razorpay } from 'razorpay';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-const razorpay = new Razorpay({
-  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
-
-const CheckoutForm = () => {
-  const handleCheckout = async () => {
-    // Implement Stripe/Razorpay checkout
-  };
-
-  return <div className="container mx-auto p-4 bg-beige">Checkout Form...</div>;
-};
-
-export default CheckoutForm;
+export default function CheckoutForm() {
+  return (
+    <div className="p-6 bg-chockleti rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform-gpu hover:scale-105 transition-all duration-300">
+      <h2 className="text-2xl font-bold text-white text-shadow-golden">Checkout</h2>
+      <p className="mt-2 text-white">Checkout form content goes here.</p>
+    </div>
+  );
+}
