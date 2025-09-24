@@ -1,14 +1,7 @@
-import QRCode from 'qrcode';
-import { Barcode } from 'barcode';
-
-export function calculateSalary(deliveredCount: number) {
-  return deliveredCount * 20; // Owner configurable via env
+export function calculateSalary(hours: number): number {
+  return hours * 10;
 }
 
-export async function generateQR(data: string) {
-  return await QRCode.toDataURL(data);
-}
-
-export function generateBarcode(data: string) {
-  return new Barcode(data).toSVG();
+export function generateQRCode(text: string): string {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(text)}`;
 }
