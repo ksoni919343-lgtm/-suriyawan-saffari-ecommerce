@@ -1,16 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        navy: '#001F3F',
-        gold: '#FFD700',
-        beige: '#F5F5DC',
-        sand: '#D2B48C',
+        'chockleti': '#3A1F1A',
+        'sandy-gold': '#FFD700',
       },
     },
   },
